@@ -5,7 +5,7 @@ from db_mngr import DB_Manager  # DB_Manager sınıfını içe aktar
 from poke import Pokemon, Fighter, Wizard, delete_pokemon_from_db  # Pokemon ve alt sınıfları içe aktar
 from translator import *
 from langdetect import detect as detect_lang
-from config import db, token  # client tokenini config.py dosyasından al
+from config import db, token, api_key  # client tokenini config.py dosyasından al
 import discord # discord.py kütüphanesini içe aktar
 from discord.ext import commands # Komutlar için gerekli modülü içe aktar
 import time
@@ -36,7 +36,7 @@ def bellek_ekle(user_id, role, content):
     cursor.execute("INSERT INTO sohbet_bellek (user_id, role, content) VALUES (?, ?, ?)", (str(user_id), role, content))
     conn.commit()
 
-openai.api_key = 'Your_API_KEY_HERE'  # OpenAI API anahtarınızı buraya girin
+openai.api_key = api_key
 
 # clientun hangi olaylara erişeceğini belirten intents nesnesi oluştur
 intents = discord.Intents.default()
